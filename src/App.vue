@@ -1,15 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Header title="Simulateur SASU"/>
+  <div class="container">
+    <div class="infos">
+      <div class="row">
+        <div class="col-md-4">
+          <ChiffreAffaireCard/>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+// Components
+import Header from "@/components/Header";
+import ChiffreAffaireCard from "@/components/ChiffreAffaireCard";
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+    ChiffreAffaireCard
   }
 }
 </script>
@@ -19,8 +32,11 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+
+.infos {
+  margin-top: 30px;
+}
+
 </style>
