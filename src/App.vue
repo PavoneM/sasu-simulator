@@ -6,6 +6,9 @@
         <div class="col-md-4">
           <ChiffreAffaireCard/>
         </div>
+        <div class="col-md-4">
+          <DepensesCard/>
+        </div>
       </div>
     </div>
   </div>
@@ -16,13 +19,15 @@
 // Components
 import Header from "@/components/Header";
 import ChiffreAffaireCard from "@/components/ChiffreAffaireCard";
+import DepensesCard from "@/components/DepensesCard";
 
 
 export default {
   name: 'App',
   components: {
     Header,
-    ChiffreAffaireCard
+    ChiffreAffaireCard,
+    DepensesCard
   }
 }
 </script>
