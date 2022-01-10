@@ -11,7 +11,7 @@
         <input id="primeannuelle" type="number" class="form-control" step="100" placeholder="0" v-model="primeAnnuelle" v-on:change="changeRemuneration" />
       </div>
       <div class="mb-3">
-        <label for="dividendespris" class="form-label">Dividendes pris</label>
+        <label for="dividendespris" class="form-label">Dividendes pris (%)</label>
         <input id="dividendespris" type="number" class="form-control" step="1" placeholder="0" v-model="dividendesPourcent" v-on:change="changeRemuneration" />
       </div>
     </div>

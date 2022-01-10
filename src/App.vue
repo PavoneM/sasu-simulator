@@ -23,9 +23,10 @@
     <div class="detailsChiffres">
       <DetailsChiffres :joursMois="joursMois"
                        :caTjm="caTjm"
+                       :caMensuel="caMensuel"
                        :caAnnuel="caAnnuel"
                        :totalCa="totalCa"
-                       :fraisMensuels="fraisMensuels"
+                       :totalFraisMensuels="totalFraisMensuels"
                        :totalFrais="totalFrais"
                        :fraisAnnuels="fraisAnnuels"
                        :salaireBrutAnnuel="salaireBrutAnnuel"
@@ -76,8 +77,10 @@ export default {
 
       // Computed Details
       caTjm: 0,
+      caMensuel: 0,
       caAnnuel: 0,
       totalCa: 0,
+      totalFraisMensuels: 0,
       totalFrais: 0,
       salaireBrutAnnuel: 0,
       totalBrut: 0,
@@ -114,18 +117,51 @@ export default {
       this.joursMois = value.joursMois;
       this.autreMensuel = value.autreMensuel;
       this.autreAnnuel = value.autreAnnuel;
+      this.computeAllDetails();
     },
     onChangeDepenses (value) {
       this.fraisMensuels = value.fraisMensuels;
       this.fraisAnnuels = value.fraisAnnuels;
+      this.computeAllDetails();
     },
     onChangeRemuneration (value) {
       this.salaireBrutMensuel = value.salaireBrutMensuel;
       this.primeAnnuelle = value.primeAnnuelle;
       this.dividendesPourcent = value.dividendesPourcent;
+      this.computeAllDetails();
     },
     computeAllDetails () {
+      this.caTjm = this.tjm * this.joursMois * 12;
+      this.caMensuel = this.autreMensuel * 12;
+      this.caAnnuel = this.autreAnnuel;
+      this.totalCa = this.caTjm + this.caMensuel + this.caAnnuel;
+      this.totalFraisMensuels = this.fraisMensuels * 12;
+      this.totalFrais = this.totalFraisMensuels + this.fraisAnnuels;
+      this.salaireBrutAnnuel = this.salaireBrutMensuel * 12;
+      this.cotisationsSal = Math.floor(this.salaireBrutAnnuel * 0.22);
+      this.salaireNet = this.salaireBrutAnnuel - this.cotisationsSal;
+      this.totalBrut = this.salaireBrutAnnuel + this.primeAnnuelle;
+      this.cotisationsPat = Math.floor(this.totalBrut * 0.42);
+      this.totalSuperBrut = this.totalBrut + this.cotisationsPat;
+      this.totalDepenses = this.totalSuperBrut + this.totalFrais;
+      this.beneficeBrut = this.totalCa - this.totalDepenses;
 
+      const tranche1IS = 38120;
+      if (this.beneficeBrut >= 0 ) {
+        if (this.beneficeBrut <= tranche1IS) {
+          this.impotSociete = Math.floor(this.beneficeBrut * 0.15);
+        } else {
+          this.impotSociete = Math.floor(tranche1IS * 0.15 + (this.beneficeBrut - tranche1IS) * 0.25);
+        }
+      }
+      this.beneficeNet = this.beneficeBrut - this.impotSociete;
+
+      this.dividendes = Math.ceil(this.dividendesPourcent/100  * this.beneficeNet);
+
+      this.prelevSociaux = Math.floor(this.dividendes * 0.3);
+      this.dividendesNets = this.dividendes - this.prelevSociaux;
+      this.totalRevenus = this.salaireNet + this.dividendesNets;
+      this.totalTaxes = this.impotSociete + this.cotisationsPat + this.cotisationsSal + this.prelevSociaux;
     }
   }
 }

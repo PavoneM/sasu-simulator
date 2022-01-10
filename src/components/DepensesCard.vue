@@ -4,7 +4,7 @@
     <div class="card-body">
       <div class="mb-3">
         <label for="fraismensuels" class="form-label">Frais mensuels</label>
-        <input id="fraismensuels" type="number" class="form-control" step="100" placeholder="0" v-model="fraisMensuels" v-on:change="changeDepenses" />
+        <input id="fraismensuels" type="number" class="form-control" step="10" placeholder="0" v-model="fraisMensuels" v-on:change="changeDepenses" />
       </div>
       <div class="mb-3">
         <label for="fraisannuels" class="form-label">Frais annuels</label>

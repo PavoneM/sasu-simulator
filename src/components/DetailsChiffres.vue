@@ -22,7 +22,11 @@
                     <td class="text-end">{{ caTjm }} €</td>
                   </tr>
                   <tr>
-                    <td>CA annuel</td>
+                    <td>CA mensuel (autre)</td>
+                    <td class="text-end">{{ caMensuel }} €</td>
+                  </tr>
+                  <tr>
+                    <td>CA annuel (autre)</td>
                     <td class="text-end">{{ caAnnuel }} €</td>
                   </tr>
                   <tr class="total">
@@ -40,7 +44,7 @@
                 <table class="table table-borderless">
                   <tr>
                     <td>Frais mensuels</td>
-                    <td class="text-end">{{ fraisMensuels }} €</td>
+                    <td class="text-end">{{ totalFraisMensuels }} €</td>
                   </tr>
                   <tr>
                     <td>Frais annuels</td>
@@ -117,7 +121,7 @@
                   </tr>
                   <tr class="total">
                     <td>Bénéfice net</td>
-                    <td class="text-end">{{ benefNet }} €</td>
+                    <td class="text-end">{{ beneficeNet }} €</td>
                   </tr>
                 </table>
               </div>
@@ -146,14 +150,14 @@
                   </tr>
                   <tr>
                     <td>Bénéfice net</td>
-                    <td class="text-end">{{ benefNet }} €</td>
+                    <td class="text-end">{{ beneficeNet }} €</td>
                   </tr>
                   <tr>
                     <td>Dividendes versés ({{ dividendesPourcent }} %)</td>
                     <td class="text-end">{{ dividendes }} €</td>
                   </tr>
                   <tr>
-                    <td>Prélévements sociaux (15.5%)</td>
+                    <td>Flat tax (30%)</td>
                     <td class="text-end">{{ prelevSociaux }} €</td>
                   </tr>
                   <tr class="total">
@@ -185,8 +189,9 @@ export default {
     joursMois: Number,
     caTjm: Number,
     caAnnuel: Number,
+    caMensuel: Number,
     totalCa: Number,
-    fraisMensuels: Number,
+    totalFraisMensuels: Number,
     fraisAnnuels: Number,
     totalFrais: Number,
     salaireBrutAnnuel: Number,
@@ -200,7 +205,6 @@ export default {
     beneficeNet: Number,
     cotisationsSal: Number,
     salaireNet: Number,
-    benefNet: Number,
     dividendes: Number,
     prelevSociaux: Number,
     dividendesPourcent: Number,
