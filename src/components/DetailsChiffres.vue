@@ -6,12 +6,12 @@
         <div class="row">
           <div class="col-md-3">
             <div class="row">
-              <div class="col-12"><b>Chiffre d'affaire</b></div>
+              <div class="col-12 fw-bold">Chiffre d'affaire</div>
               <div class="col-12">
                 <table class="table table-borderless">
                   <tr>
                     <td>Jours travaillés / an</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ joursMois }}</td>
                   </tr>
                   <tr>
                     <td><br/></td>
@@ -19,15 +19,15 @@
                   </tr>
                   <tr>
                     <td>CA via TJM</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ caTjm }} €</td>
                   </tr>
                   <tr>
                     <td>CA annuel</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ caAnnuel }} €</td>
                   </tr>
                   <tr class="total">
-                    <td><b>Total CA</b></td>
-                    <td class="text-end"><b>0 €</b></td>
+                    <td>Total CA</td>
+                    <td class="text-end">{{ totalCa }} €</td>
                   </tr>
                 </table>
               </div>
@@ -35,20 +35,20 @@
           </div>
           <div class="col-md-3">
             <div class="row">
-              <div class="col-12"><b>Dépenses</b></div>
+              <div class="col-12 fw-bold">Dépenses</div>
               <div class="col-12">
                 <table class="table table-borderless">
                   <tr>
                     <td>Frais mensuels</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ fraisMensuels }} €</td>
                   </tr>
                   <tr>
                     <td>Frais annuels</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ fraisAnnuels }} €</td>
                   </tr>
                   <tr class="total">
                     <td>Total frais</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ totalFrais }} €</td>
                   </tr>
                   <tr>
                     <td><br/></td>
@@ -56,15 +56,15 @@
                   </tr>
                   <tr>
                     <td>Salaire annuel brut</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ salaireBrutAnnuel }} €</td>
                   </tr>
                   <tr>
                     <td>Prime annuelle brute</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ primeAnnuelle }} €</td>
                   </tr>
                   <tr class="total">
                     <td>Total brut</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ totalBrut }} €</td>
                   </tr>
                   <tr>
                     <td><br/></td>
@@ -72,19 +72,19 @@
                   </tr>
                   <tr>
                     <td>Cotis. patronales (42%)</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ cotisationsPat }} €</td>
                   </tr>
                   <tr class="total">
                     <td>Total super-brut</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ totalSuperBrut }} €</td>
                   </tr>
                   <tr>
                     <td><br/></td>
                     <td></td>
                   </tr>
-                  <tr>
-                    <td><b>Total dépenses</b></td>
-                    <td class="text-end"><b>0 €</b></td>
+                  <tr class="fw-bold">
+                    <td>Total dépenses</td>
+                    <td class="text-end">{{ totalDepenses }} €</td>
                   </tr>
                 </table>
               </div>
@@ -92,20 +92,20 @@
           </div>
           <div class="col-md-3">
             <div class="row">
-              <div class="col-12"><b>Bénéfices</b></div>
+              <div class="col-12 fw-bold">Bénéfices</div>
               <div class="col-12">
                 <table class="table table-borderless">
                   <tr>
                     <td>Total CA</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ totalCa }} €</td>
                   </tr>
                   <tr>
                     <td>Total Dépenses</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ totalDepenses }} €</td>
                   </tr>
                   <tr class="total">
                     <td>Bénéfice brut</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ beneficeBrut }} €</td>
                   </tr>
                   <tr>
                     <td><br/></td>
@@ -113,11 +113,11 @@
                   </tr>
                   <tr>
                     <td>Impôt sur les Sociétés (IS)</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ impotSociete }} €</td>
                   </tr>
                   <tr class="total">
-                    <td><b>Bénéfice net</b></td>
-                    <td class="text-end"><b>0 €</b></td>
+                    <td>Bénéfice net</td>
+                    <td class="text-end">{{ benefNet }} €</td>
                   </tr>
                 </table>
               </div>
@@ -125,20 +125,20 @@
           </div>
           <div class="col-md-3">
             <div class="row">
-              <div class="col-12"><b>Revenus</b></div>
+              <div class="col-12 fw-bold">Revenus</div>
               <div class="col-12">
                 <table class="table table-borderless">
                   <tr>
                     <td>Salaire brut</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ salaireBrutAnnuel }} €</td>
                   </tr>
                   <tr>
                     <td>Cotis. salariales (22%)</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ cotisationsSal }} €</td>
                   </tr>
                   <tr class="total">
                     <td>Salaire net</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ salaireNet }} €</td>
                   </tr>
                   <tr>
                     <td><br/></td>
@@ -146,27 +146,27 @@
                   </tr>
                   <tr>
                     <td>Bénéfice net</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ benefNet }} €</td>
                   </tr>
                   <tr>
-                    <td>Dividendes versés</td>
-                    <td class="text-end">0 €</td>
+                    <td>Dividendes versés ({{ dividendesPourcent }} %)</td>
+                    <td class="text-end">{{ dividendes }} €</td>
                   </tr>
                   <tr>
                     <td>Prélévements sociaux (15.5%)</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ prelevSociaux }} €</td>
                   </tr>
                   <tr class="total">
                     <td>Dividendes nets</td>
-                    <td class="text-end">0 €</td>
+                    <td class="text-end">{{ dividendesNets }} €</td>
                   </tr>
                   <tr>
                     <td><br/></td>
                     <td></td>
                   </tr>
-                  <tr>
-                    <td><b>Total revenus</b></td>
-                    <td class="text-end"><b>0 €</b></td>
+                  <tr class="fw-bold">
+                    <td>Total revenus</td>
+                    <td class="text-end">{{ totalRevenus }} €</td>
                   </tr>
                 </table>
               </div>
@@ -182,7 +182,30 @@
 export default {
   name: 'DetailsChiffres',
   props: {
-
+    joursMois: Number,
+    caTjm: Number,
+    caAnnuel: Number,
+    totalCa: Number,
+    fraisMensuels: Number,
+    fraisAnnuels: Number,
+    totalFrais: Number,
+    salaireBrutAnnuel: Number,
+    primeAnnuelle: Number,
+    totalBrut: Number,
+    cotisationsPat: Number,
+    totalSuperBrut: Number,
+    totalDepenses: Number,
+    beneficeBrut: Number,
+    impotSociete: Number,
+    beneficeNet: Number,
+    cotisationsSal: Number,
+    salaireNet: Number,
+    benefNet: Number,
+    dividendes: Number,
+    prelevSociaux: Number,
+    dividendesPourcent: Number,
+    dividendesNets: Number,
+    totalRevenus: Number
   }
 }
 </script>
@@ -209,6 +232,7 @@ td {
 
 tr.total {
   border-top: 1px solid #9f9d9d !important;
+  font-weight: bold;
 }
 
 </style>

@@ -2,15 +2,15 @@
   <div class="container text-center">
     <div class="row">
       <div class="col-md-4">
-        <span class="ca">10 000€</span><br/>
+        <span class="ca">{{ totalCa }} €</span><br/>
         <span class="infos-chiffres">CHIFFRE D'AFFAIRES</span>
       </div>
       <div class="col-md-4">
-        <span class="revenus">10 000€</span><br/>
+        <span class="revenus">{{ totalRevenus }} €</span><br/>
         <span class="infos-chiffres">REVENUS NETS FREELANCE</span>
       </div>
       <div class="col-md-4">
-        <span class="impots">10 000€</span><br/>
+        <span class="impots">{{ totalTaxes }} €</span><br/>
         <span class="infos-chiffres">TAXES ET IMPÔTS</span>
       </div>
     </div>
@@ -21,7 +21,9 @@
 export default {
   name: 'Chiffres',
   props: {
-
+    totalCa: Number,
+    totalRevenus: Number,
+    totalTaxes: Number
   }
 }
 </script>
