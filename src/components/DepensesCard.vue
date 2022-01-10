@@ -1,14 +1,14 @@
 <template>
   <div class="card border-primary">
-    <div class="card-header bg-primary text-white text-center">Chiffre d'affaire</div>
+    <div class="card-header bg-primary text-white text-center">Dépenses</div>
     <div class="card-body">
       <div class="mb-3">
-        <label for="tjm" class="form-label">Frais mensuels</label>
-        <input id="tjm" type="number" class="form-control" step="10" placeholder="0"/>
+        <label for="fraismensuels" class="form-label">Frais mensuels</label>
+        <input id="fraismensuels" type="number" class="form-control" step="100" placeholder="0"/>
       </div>
       <div class="mb-3">
-        <label for="joursmois" class="form-label">Frais annuels</label>
-        <input id="joursmois" type="number" class="form-control" step="1" placeholder="0"/>
+        <label for="fraisannuels" class="form-label">Frais annuels</label>
+        <input id="fraisannuels" type="number" class="form-control" step="100" placeholder="0"/>
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'ChiffreAffaireCard',
+  name: 'DepensesCard',
   props: {
 
   }
