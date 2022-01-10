@@ -1,6 +1,7 @@
 <template>
   <Header title="Simulateur SASU"/>
   <div class="container">
+
     <div class="infos">
       <div class="row">
         <div class="col-md-4">
@@ -14,6 +15,10 @@
         </div>
       </div>
     </div>
+
+    <div class="chiffres">
+      <Chiffres/>
+    </div>
   </div>
 </template>
 
@@ -24,6 +29,7 @@ import Header from "@/components/Header";
 import ChiffreAffaireCard from "@/components/ChiffreAffaireCard";
 import DepensesCard from "@/components/DepensesCard";
 import RemunerationCard from "@/components/RemunerationCard";
+import Chiffres from "@/components/Chiffres";
 
 export default {
   name: 'App',
@@ -31,7 +37,8 @@ export default {
     Header,
     ChiffreAffaireCard,
     DepensesCard,
-    RemunerationCard
+    RemunerationCard,
+    Chiffres
   }
 }
 </script>
