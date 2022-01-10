@@ -19,6 +19,10 @@
     <div class="chiffres">
       <Chiffres/>
     </div>
+
+    <div class="detailsChiffres">
+      <DetailsChiffres/>
+    </div>
   </div>
 </template>
 
@@ -30,6 +34,7 @@ import ChiffreAffaireCard from "@/components/ChiffreAffaireCard";
 import DepensesCard from "@/components/DepensesCard";
 import RemunerationCard from "@/components/RemunerationCard";
 import Chiffres from "@/components/Chiffres";
+import DetailsChiffres from "@/components/DetailsChiffres";
 
 export default {
   name: 'App',
@@ -38,7 +43,8 @@ export default {
     ChiffreAffaireCard,
     DepensesCard,
     RemunerationCard,
-    Chiffres
+    Chiffres,
+    DetailsChiffres
   }
 }
 </script>
