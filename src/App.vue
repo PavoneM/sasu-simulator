@@ -17,7 +17,7 @@
     </div>
 
     <div class="chiffres">
-      <Chiffres :totalCa="totalCa" :totalRevenus="totalRevenus" :totalTaxes="totalTaxes"/>
+      <Chiffres :totalCa="totalCa" :totalRevenus="totalRevenus" :totalTaxes="totalTaxes" :totalTreso="totalTreso"/>
     </div>
 
     <div class="detailsChiffres">
@@ -105,6 +105,7 @@ export default {
       dividendes: 0,
       dividendesNets: 0,
       totalRevenus: 0,
+      totalTreso: 0,
 
       // Computed numbers
       totalTaxes: 0
@@ -208,6 +209,7 @@ export default {
 
       this.totalRevenus = this.salaireNetImpot + this.dividendesNets;
       this.totalTaxes = this.impotSociete + this.cotisationsPat + this.cotisationsSal + this.prelevSociaux + this.impotRevenu;
+      this.totalTreso = this.beneficeNet - this.dividendes;
     }
   }
 }

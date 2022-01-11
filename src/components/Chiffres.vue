@@ -1,20 +1,25 @@
 <template>
   <div class="container text-center">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <span class="infos-chiffres">CHIFFRE D'AFFAIRES</span><br/>
         <span class="ca">{{ totalCa }} €</span><br/>
         <span class="ca-mois">{{ Math.floor(totalCa / 12) }} € / mois </span>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <span class="infos-chiffres">REVENUS NETS FREELANCE</span><br/>
         <span class="revenus">{{ totalRevenus }} €</span><br/>
         <span class="revenus-mois">{{ Math.floor(totalRevenus / 12) }} € / mois </span>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <span class="infos-chiffres">TAXES ET IMPÔTS</span><br/>
         <span class="impots">{{ totalTaxes }} €</span><br/>
         <span class="impots-mois">{{ Math.floor(totalTaxes / 12) }} € / mois </span>
+      </div>
+      <div class="col-md-3">
+        <span class="infos-chiffres">TRéSORERIE</span><br/>
+        <span class="treso">{{ totalTreso }} €</span><br/>
+        <span class="treso-mois">{{ Math.floor(totalTreso / 12) }} € / mois </span>
       </div>
     </div>
   </div>
@@ -26,7 +31,8 @@ export default {
   props: {
     totalCa: Number,
     totalRevenus: Number,
-    totalTaxes: Number
+    totalTaxes: Number,
+    totalTreso: Number
   }
 }
 </script>
@@ -53,6 +59,11 @@ export default {
   font-size: 4rem;
 }
 
+.treso {
+  color: #e7a916;
+  font-size: 4rem;
+}
+
 .ca-mois {
   color: #008ACF;
   font-size: 1.5rem;
@@ -65,6 +76,11 @@ export default {
 
 .impots-mois {
   color: #db2828;
+  font-size: 1.5rem;
+}
+
+.treso-mois {
+  color: #e7a916;
   font-size: 1.5rem;
 }
 

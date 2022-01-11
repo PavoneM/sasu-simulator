@@ -12,7 +12,7 @@
       </div>
       <div class="mb-3">
         <label for="dividendespris" class="form-label">Dividendes pris (%)</label>
-        <input id="dividendespris" type="number" class="form-control" step="1" min="0" placeholder="0" v-model="dividendesPourcent" v-on:keyup="changeRemuneration" v-on:change="changeRemuneration" />
+        <input id="dividendespris" type="number" class="form-control" step="1" min="0" max="100" placeholder="0" v-model="dividendesPourcent" v-on:keyup="changeRemuneration" v-on:change="changeRemuneration" />
       </div>
       <div class="mb-3">
         <label for="reductionIr" class="form-label">Réduction d'IR</label>
