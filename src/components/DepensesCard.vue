@@ -4,11 +4,11 @@
     <div class="card-body">
       <div class="mb-3">
         <label for="fraismensuels" class="form-label">Frais mensuels</label>
-        <input id="fraismensuels" type="number" class="form-control" step="10" placeholder="0" v-model="fraisMensuels" v-on:change="changeDepenses" />
+        <input id="fraismensuels" type="number" class="form-control" step="10" placeholder="0" min="0" v-model="fraisMensuels" v-on:keyup="changeDepenses" v-on:change="changeDepenses" />
       </div>
       <div class="mb-3">
         <label for="fraisannuels" class="form-label">Frais annuels</label>
-        <input id="fraisannuels" type="number" class="form-control" step="100" placeholder="0" v-model="fraisAnnuels" v-on:change="changeDepenses" />
+        <input id="fraisannuels" type="number" class="form-control" step="100" placeholder="0" min="0" v-model="fraisAnnuels" v-on:keyup="changeDepenses" v-on:change="changeDepenses" />
       </div>
     </div>
   </div>
@@ -18,8 +18,8 @@
 export default {
   data() {
     return {
-      fraisMensuels: 0,
-      fraisAnnuels: 0
+      fraisMensuels: 500,
+      fraisAnnuels: 2000
     }
   },
   name: 'DepensesCard',
@@ -28,8 +28,11 @@ export default {
   },
   methods: {
     changeDepenses () {
-      this.$emit('changeDepenses', {fraisMensuels: this.fraisMensuels, fraisAnnuels: this.fraisAnnuels})
+      this.$emit('changeDepenses', {fraisMensuels: Math.floor(this.fraisMensuels), fraisAnnuels: Math.floor(this.fraisAnnuels)})
     }
+  },
+  beforeMount(){
+    this.changeDepenses();
   }
 }
 </script>

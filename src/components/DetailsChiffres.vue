@@ -11,7 +11,7 @@
                 <table class="table table-borderless">
                   <tr>
                     <td>Jours travaillés / an</td>
-                    <td class="text-end">{{ joursMois }}</td>
+                    <td class="text-end">{{ joursMois * 12 }}</td>
                   </tr>
                   <tr>
                     <td><br/></td>
@@ -149,6 +149,26 @@
                     <td></td>
                   </tr>
                   <tr>
+                    <td>Salaire net imposable</td>
+                    <td class="text-end">{{ salaireNetImposable }} €</td>
+                  </tr>
+                  <tr>
+                    <td>Impot sur le revenu</td>
+                    <td class="text-end">{{ impotRevenu }} €</td>
+                  </tr>
+                  <tr>
+                    <td>Reduction d'IR</td>
+                    <td class="text-end">{{ reductionIr }} €</td>
+                  </tr>
+                  <tr class="total">
+                    <td>Salaire net après impôts</td>
+                    <td class="text-end">{{ salaireNetImpot }} €</td>
+                  </tr>
+                  <tr>
+                    <td><br/></td>
+                    <td></td>
+                  </tr>
+                  <tr>
                     <td>Bénéfice net</td>
                     <td class="text-end">{{ beneficeNet }} €</td>
                   </tr>
@@ -209,6 +229,10 @@ export default {
     prelevSociaux: Number,
     dividendesPourcent: Number,
     dividendesNets: Number,
+    salaireNetImposable: Number,
+    impotRevenu: Number,
+    reductionIr: Number,
+    salaireNetImpot: Number,
     totalRevenus: Number
   }
 }

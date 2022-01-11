@@ -46,6 +46,10 @@
                        :dividendesNets="dividendesNets"
                        :dividendesPourcent="dividendesPourcent"
                        :totalRevenus="totalRevenus"
+                       :salaireNetImposable="salaireNetImposable"
+                       :impotRevenu="impotRevenu"
+                       :reductionIr="reductionIr"
+                       :salaireNetImpot="salaireNetImpot"
       />
     </div>
   </div>
@@ -74,6 +78,10 @@ export default {
       salaireBrutMensuel: 0,
       primeAnnuelle: 0,
       dividendesPourcent: 0,
+      salaireNetImposable: 0,
+      impotRevenu: 0,
+      reductionIr: 0,
+      salaireNetImpot: 0,
 
       // Computed Details
       caTjm: 0,
@@ -128,6 +136,7 @@ export default {
       this.salaireBrutMensuel = value.salaireBrutMensuel;
       this.primeAnnuelle = value.primeAnnuelle;
       this.dividendesPourcent = value.dividendesPourcent;
+      this.reductionIr = value.reductionIr;
       this.computeAllDetails();
     },
     computeAllDetails () {
@@ -156,12 +165,49 @@ export default {
       }
       this.beneficeNet = this.beneficeBrut - this.impotSociete;
 
-      this.dividendes = Math.ceil(this.dividendesPourcent/100  * this.beneficeNet);
+      const trancheIR1 = 10225;
+      const trancheIR2 = 26070;
+      const trancheIR3 = 74545;
+      const trancheIR4 = 160336;
 
+      // 2022 https://www.corrigetonimpot.fr/decote-impot-revenu-calcul-declaration/
+
+      // const csg = this.salaireNet * 0.024;
+      // const crds = this.salaireNet * 0.05;
+      // Le salaire imposable s'obtient en additionnant  au salaire net la part de charges sociales non déductible calculée soit : 2,40 % de 98,25 % du salaire brut.
+      this.salaireNetImposable = Math.floor( this.salaireNet + this.salaireBrutAnnuel * 0.9825 * 0.024);
+
+      // Abattement 10%
+      this.salaireNetImposable = Math.floor(this.salaireNetImposable * 0.9);
+
+      if (this.salaireNetImposable >= 0 ) {
+        if (this.salaireNetImposable <= trancheIR1) {
+          this.impotRevenu = 0;
+        } else if (this.salaireNetImposable <= trancheIR2) {
+          this.impotRevenu = Math.floor((this.salaireNetImposable - trancheIR1) * 0.11);
+        } else if (this.salaireNetImposable <= trancheIR3) {
+          this.impotRevenu = Math.floor((trancheIR2 - trancheIR1) * 0.11 + (this.salaireNetImposable - trancheIR2) * 0.30);
+        } else if (this.salaireNetImposable <= trancheIR4) {
+          this.impotRevenu = Math.floor((trancheIR2 - trancheIR1) * 0.11 + (trancheIR3 - trancheIR2) * 0.30 + (this.salaireNetImposable - trancheIR3) * 0.41);
+        }
+      }
+
+      // Calcul de la décôte éventuelle si < 1746 €
+      if (this.salaireNetImposable < (1746*12)) {
+        this.impotRevenu -= Math.floor(790 - 0.4525 * this.impotRevenu);
+      }
+      if (this.impotRevenu < 0) {
+        this.impotRevenu = 0;
+      }
+
+      this.salaireNetImpot = this.salaireNet - this.impotRevenu + this.reductionIr;
+
+      this.dividendes = Math.ceil(this.dividendesPourcent/100  * this.beneficeNet);
       this.prelevSociaux = Math.floor(this.dividendes * 0.3);
       this.dividendesNets = this.dividendes - this.prelevSociaux;
-      this.totalRevenus = this.salaireNet + this.dividendesNets;
-      this.totalTaxes = this.impotSociete + this.cotisationsPat + this.cotisationsSal + this.prelevSociaux;
+
+      this.totalRevenus = this.salaireNetImpot + this.dividendesNets;
+      this.totalTaxes = this.impotSociete + this.cotisationsPat + this.cotisationsSal + this.prelevSociaux + this.impotRevenu;
     }
   }
 }
